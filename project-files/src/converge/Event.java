@@ -9,6 +9,7 @@ public class Event {
 	int a_year;
 	Vector<Attendee> a_attendees = new Vector<Attendee>();
 	Vector<Integer> a_adminAvailability = new Vector<Integer>();
+  
 	public Event() {}
 	public Event(String eventName, int month, int day, int year, Vector attendees, Vector adminAvailability )
 	{
