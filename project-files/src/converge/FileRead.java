@@ -55,7 +55,7 @@ public class FileRead
 		        Event e;
 		        System.out.println(records.get(1));
 		        
-		        e.
+		        
 		        
 		  } 
 		}
