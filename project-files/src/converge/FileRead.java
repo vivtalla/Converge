@@ -5,7 +5,9 @@ import java.util.*;
 
 public class FileRead
 {
-	private static Vector<Event> readEvents() throws IOException
+	public FileRead() {}
+	
+	public Vector<Event> readEvents() throws IOException
 	{
 		//Declare List of events
 		Vector<Event> events = new Vector<Event>();
