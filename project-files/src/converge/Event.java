@@ -7,8 +7,9 @@ public class Event {
 	int a_month;
 	int a_day;
 	int a_year;
-	Vector a_attendees = new Vector();
-	Vector a_adminAvailability = new Vector();
+	Vector<Attendee> a_attendees = new Vector<Attendee>();
+	Vector<Integer> a_adminAvailability = new Vector<Integer>();
+  
 	public Event() {}
 	public Event(String eventName, int month, int day, int year, Vector attendees, Vector adminAvailability )
 	{
@@ -19,6 +20,19 @@ public class Event {
 		a_attendees = attendees;
 		a_adminAvailability = adminAvailability;
 		
+	}
+	public void print()
+	{
+		System.out.println(a_eventName);
+		System.out.println(a_month);
+		System.out.println(a_day);
+		System.out.println(a_year);
+		System.out.println(a_adminAvailability);
+		for (int i = 0; i < a_attendees.size(); i++)
+		{
+			Attendee a = a_attendees.get(i);
+			System.out.println(a.getName() + a.getAvailability());
+		}
 	}
 	public void setEventName(String eventName)
 	{
@@ -58,6 +72,4 @@ public class Event {
 	{
 		
 	}
-	
-	
 }
