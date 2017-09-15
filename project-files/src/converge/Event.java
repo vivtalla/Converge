@@ -1,6 +1,7 @@
 package converge;
 
-import java.util.Vector;
+import java.io.*;
+import java.util.*;
 
 public class Event {
 	String a_eventName;
@@ -9,7 +10,6 @@ public class Event {
 	int a_year;
 	Vector<Attendee> a_attendees = new Vector<Attendee>();
 	Vector<Integer> a_adminAvailability = new Vector<Integer>();
-  
 	public Event() {}
 	public Event(String eventName, int month, int day, int year, Vector attendees, Vector adminAvailability )
 	{
@@ -34,6 +34,10 @@ public class Event {
 			System.out.println(a.getName() + a.getAvailability());
 		}
 	}
+	public String getAdminName()
+	{
+		return a_attendees.get(0).getName();
+	}
 	public void setEventName(String eventName)
 	{
 		a_eventName = eventName;
@@ -42,7 +46,7 @@ public class Event {
 	{
 		return a_eventName;
 	}
-	public void setMonth( int month )
+	public void setMonth(int month)
 	{
 		a_month = month;
 	}
@@ -56,7 +60,6 @@ public class Event {
 	}
 	public int getDay()
 	{
-		
 		return a_day;
 	}
 	public void setYear(int year)
@@ -67,9 +70,30 @@ public class Event {
 	{
 		return a_year;
 	}
-	
-	private static void exportEvents()
+	public void addAttendee(Attendee a)
 	{
+		a_attendees.add(a);
+	}
+	@SuppressWarnings("unused")
+	private void exportEvents() throws IOException
+	{
+		String filename = a_eventName.replaceAll("\\s+","") + ".txt";
+		FileWriter writer = new FileWriter(filename);
 		
+		writer.write(a_eventName + "\n");
+		writer.write(a_month + " " + a_day + " " + a_year + "\n");
+		
+		for (int i = 0; i < a_adminAvailability.size(); i++)
+		{
+			writer.write(a_adminAvailability.get(i) + " ");
+		}
+		writer.write("\n");
+		
+		
+		
+		
+		
+		writer.flush();
+		writer.close();
 	}
 }
