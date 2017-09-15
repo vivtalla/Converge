@@ -5,7 +5,8 @@ import java.util.*;
 
 public class FileRead
 {
-	private static Vector<Event> readEvents() throws IOException
+	public FileRead() {}
+	public static Vector<Event> readEvents() throws IOException
 	{
 		//Declare List of events
 		Vector<Event> events = new Vector<Event>();
@@ -24,7 +25,7 @@ public class FileRead
 		{
 		  File file = listOfFiles[i];
 		  System.out.println(file.getName());
-		  if (file.isFile() && file.getName().endsWith(".txt")) 
+		  if (file.isFile() && file.getName().endsWith(".event")) 
 		  {
 				//in file object within try catch block
 		        try 
@@ -71,16 +72,19 @@ public class FileRead
 		        		String attendeeName = null;
 		        		Vector<Integer> availability = new Vector<Integer>();
 		        		
+		        		//Within the line, consider the int values as the user availability
 		        		int availabilityIndex = 0;
 		        		do
 		        		{
 			        		try 
 			        		{
+			        			//If the value can be parsed, add to availability
 			        		    tempInt = Integer.parseInt(splitAtt[availabilityIndex]);
 			        		    availability.add(tempInt);
 			        		} 
 			        		catch (NumberFormatException e) 
 			        		{
+			        			//Otherwise set that value as the name of the user
 			        			if (attendeeName == null)
 			        			{
 			        				attendeeName = splitAtt[availabilityIndex];
@@ -93,25 +97,27 @@ public class FileRead
 			        		availabilityIndex++;
 		        		} while (availabilityIndex < splitAtt.length);
 		        		
+		        		//Consider the nameless line as the admin availability
 		        		if (attendeeName == null)
 		        		{
 		        			adminAvailability = availability;
 		        		}
 		        		else
 		        		{
+		        			//Otherwise add the attendee to the vector of attendees
 			        		Attendee a = new Attendee(attendeeName, availability);
 			        		attendees.add(a);
 		        		}
 		        		
 		        		attendeeIndex++;
-		        		
 		        } while(attendeeIndex < records.size());
 		        
+		        //Create event with values from file
 		        Event e = new Event(name, month, day, year, attendees, adminAvailability);
 		        events.add(e);
 		  } 
 		}
+		//Et voila!
 		return events;
 	}
 }
-
