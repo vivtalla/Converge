@@ -74,25 +74,36 @@ public class Event {
 	{
 		a_attendees.add(a);
 	}
-	@SuppressWarnings("unused")
 	private void exportEvents() throws IOException
 	{
-		String filename = a_eventName.replaceAll("\\s+","") + ".txt";
+		//Export file to .event file in /event_log/ directory
+		String filename = "event_log/" + a_eventName.replaceAll("\\s+","") + ".event";
 		FileWriter writer = new FileWriter(filename);
 		
+		//Output name and date accordingly
 		writer.write(a_eventName + "\n");
 		writer.write(a_month + " " + a_day + " " + a_year + "\n");
 		
+		//Output the admin availability vector
 		for (int i = 0; i < a_adminAvailability.size(); i++)
 		{
 			writer.write(a_adminAvailability.get(i) + " ");
 		}
 		writer.write("\n");
 		
+		//Iterate through attendees lines
+		for (int i = 0; i < a_attendees.size(); i++)
+		{		
+			//Output the name and availability of the attendee
+			writer.write(a_attendees.get(i).getName() + " ");
+			for (int j = 0; j < a_attendees.get(i).getAvailability().size(); j++)
+			{
+				writer.write(a_attendees.get(i).getAvailability().get(j) + " ");
+			}
+			writer.write("\n");
+		}
 		
-		
-		
-		
+		//Close FileWriter
 		writer.flush();
 		writer.close();
 	}
