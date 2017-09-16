@@ -809,30 +809,31 @@ public class AddEvent{
 		return timeAsInt;
 	}
 	int choice; //int used to track choice made by user
-	String availability; //string used to store the admin avilability
+	String startAvailability; //string used to store the start of the admin availability
+	String endAvailability; //string used to store the end of the admin availability
 	Vector<Integer> timeVec = new Vector<Integer>() ;{ //vector that will hold ints 0-47 each which represents a certain availability.
 	for (int i = 0; i < 48; i++)
 	{
 		timeVec.addElement(i);
 	}
-	Event newEvent = new Event();
+	Event adminEvent = new Event();
 	
-	Scanner userInput = new Scanner(System.in); //allows for user input
+	Scanner userInput = new Scanner(System.in); //Scanner object allows for user input
 	
 	System.out.println("Enter the name of the event: ");
 	
-	newEvent.setEventName(userInput.next());
+	adminEvent.setEventName(userInput.next());
 	
 	System.out.println("Enter the year of the event as an integer: ");
-	newEvent.setYear(userInput.nextInt());
+	adminEvent.setYear(userInput.nextInt());
 	
 	System.out.println("Enter the Month of the event as an integer: ");
 	
-	newEvent.setMonth(userInput.nextInt());
+	adminEvent.setMonth(userInput.nextInt());
 	
 	System.out.println("Enter the Day of the event as an integer: ");
 	
-	newEvent.setDay(userInput.nextInt());
+	adminEvent.setDay(userInput.nextInt());
 	
 	System.out.println("Would you like the time to be displayed in 12 hour or 24 hour mode?\n");
 	System.out.println("Enter 12 for 12 hour mode or 24 for 24 hour mode\n");
@@ -846,9 +847,42 @@ public class AddEvent{
 			System.out.println(twelveHourConversion(timeVec.get(i)));
 			System.out.println(" ");
 		}
-		//System.out.println("\n");
-		//System.out.println("Type the start time you are available: ");
-		//availability = userInput.next();
+		System.out.println("\n");
+		System.out.println("When you type in your availability, type them in the format above.\n");
+		System.out.println("For Example: If you wanted to start at 1 PM, type '1:00PM'\n");
+		System.out.println("Type the start time you are available: ");
+		startAvailability = userInput.next();
+		while( twelveHourtoInt( startAvailability ) == 50 ) //checks to see if the time the user input is valid
+		{
+			System.out.println("Invalid Input. Please type the start time of your availability in the same format as follows.\n");
+			System.out.println("For Example: If you wanted to start at 1 PM, type '1:00PM'\n");
+			System.out.println("Starting Availibility: ");
+			startAvailability = userInput.next();
+		}
+		System.out.println("Type the end time you are available until: ");
+		endAvailability = userInput.next();
+		while( (twelveHourtoInt( endAvailability ) == 50) || (twelveHourtoInt(endAvailability) < twelveHourtoInt(startAvailability)) ) //checks to see if the time the user input was valid
+		{
+			if (twelveHourtoInt( endAvailability ) == 50) //if the String the user input isn't valid
+			{
+				System.out.println("Invalid Input. Please type the end time of your availability in the same format as below.\n");
+				System.out.println("For Example: If you are available until 5PM, type '5:00PM' \n");
+				System.out.println("Available until: ");
+				endAvailability = userInput.next();
+			}
+			else if (twelveHourtoInt(endAvailability) < twelveHourtoInt(startAvailability)) //if the time the user input is before their start time
+			{
+				System.out.println("Please input an ending time that is after the start time you have indicated\n");
+				System.out.println("Available until: ");
+				endAvailability = userInput.next();
+			}
+		}
+		
+		for( int i = twelveHourtoInt(startAvailability); i<twelveHourtoInt(endAvailability); i++)
+		{
+			adminEvent.a_adminAvailability.addElement(i); //adds the availability times of the admin
+		}
+			
 		
 	}
 	else if (choice == 24)
