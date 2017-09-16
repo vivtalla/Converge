@@ -60,7 +60,9 @@ public class Main {
 				System.out.println("Invalid input. Try again.");
 			}
 		}
-		
-		
+		boolean incorrectTime = true;
+		while (incorrectTime) {
+			
+		}
 	}
 }
