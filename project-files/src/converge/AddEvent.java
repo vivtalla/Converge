@@ -5,7 +5,7 @@ import java.util.Vector;
 
 public class AddEvent{
 	
-	public String twelveHourConversion(int i)
+	public String twelveHourConversion(int i) //method will convert the ints placed in the vectors to the needed strings for 12 hour mode
 	{
 		String conversion = "\0";
 		
@@ -203,7 +203,8 @@ public class AddEvent{
 		}
 		return conversion;
 	}
-	public String twentyFourHourConversion(int i)
+	
+	public String twentyFourHourConversion(int i) //method converts ints in vecs into corresponding strings for 24:00 hour mode;
 	{
 		String conversion = "\0";
 		
@@ -401,8 +402,415 @@ public class AddEvent{
 		}
 		return conversion;
 	}
-	int choice;
-	Vector<Integer> timeVec = new Vector<Integer>() ;{
+	
+	public int twelveHourtoInt(String time)//this method will take a String in 12 hour and return its corresponding int. 
+	{
+		int timeAsInt; //variable that will convert string into the corresponding number
+		
+		if(time == "12:00AM")
+		{
+			timeAsInt = 0;
+		}
+		else if(time == "12:30AM")
+		{
+			timeAsInt = 1;
+		}
+		else if(time == "1:00AM")
+		{
+			timeAsInt = 2;
+		}
+		else if(time == "1:30AM")
+		{
+			timeAsInt = 3;
+		}
+		else if(time == "2:00AM")
+		{
+			timeAsInt = 4;
+		}
+		else if(time == "2:30AM")
+		{
+			timeAsInt = 5;
+		}
+		else if(time == "3:00AM")
+		{
+			timeAsInt = 6;
+		}
+		else if(time == "3:30AM")
+		{
+			timeAsInt = 7;
+		}
+		else if(time == "4:00AM")
+		{
+			timeAsInt = 8;
+		}
+		else if(time == "4:30AM")
+		{
+			timeAsInt = 9;
+		}
+		else if(time == "5:00AM")
+		{
+			timeAsInt = 10;
+		}
+		else if(time == "5:30AM")
+		{
+			timeAsInt = 11;
+		}
+		else if(time == "6:00AM")
+		{
+			timeAsInt = 12;
+		}
+		else if(time == "6:30AM")
+		{
+			timeAsInt = 13;
+		}
+		else if(time == "7:00AM")
+		{
+			timeAsInt = 14;
+		}
+		else if(time == "7:30AM")
+		{
+			timeAsInt = 15;
+		}
+		else if(time == "8:00AM")
+		{
+			timeAsInt = 16;
+		}
+		else if(time == "8:30AM")
+		{
+			timeAsInt = 17;
+		}
+		else if(time == "9:00AM")
+		{
+			timeAsInt = 18;
+		}
+		else if(time == "9:30AM")
+		{
+			timeAsInt = 19;
+		}
+		else if(time == "10:00AM")
+		{
+			timeAsInt = 20;
+		}
+		else if(time == "10:30AM")
+		{
+			timeAsInt = 21;
+		}
+		else if(time == "11:00AM")
+		{
+			timeAsInt = 22;
+		}
+		else if(time == "11:30AM")
+		{
+			timeAsInt = 23;
+		}
+		else if(time == "12:00PM")
+		{
+			timeAsInt = 24;
+		}
+		else if(time == "12:30PM")
+		{
+			timeAsInt = 25;
+		}
+		else if(time == "1:00PM")
+		{
+			timeAsInt = 26;
+		}
+		else if(time == "1:30PM")
+		{
+			timeAsInt = 27;
+		}
+		else if(time == "2:00PM")
+		{
+			timeAsInt = 28;
+		}
+		else if(time == "2:30PM")
+		{
+			timeAsInt = 29;
+		}
+		else if(time == "3:00PM")
+		{
+			timeAsInt = 30;
+		}
+		else if(time == "3:30PM")
+		{
+			timeAsInt = 31;
+		}
+		else if(time == "4:00PM")
+		{
+			timeAsInt = 32;
+		}
+		else if(time == "4:30PM")
+		{
+			timeAsInt = 33;
+		}
+		else if(time == "5:00PM")
+		{
+			timeAsInt = 34;
+		}
+		else if(time == "5:30PM")
+		{
+			timeAsInt = 35;
+		}
+		else if(time == "6:00PM")
+		{
+			timeAsInt = 36;
+		}
+		else if(time == "6:30PM")
+		{
+			timeAsInt = 37;
+		}
+		else if(time == "7:00PM")
+		{
+			timeAsInt = 38;
+		}
+		else if(time == "7:30PM")
+		{
+			timeAsInt = 39;
+		}
+		else if(time == "8:00PM")
+		{
+			timeAsInt = 40;
+		}
+		else if(time == "8:30PM")
+		{
+			timeAsInt = 41;
+		}
+		else if(time == "9:00PM")
+		{
+			timeAsInt = 42;
+		}
+		else if(time == "9:30PM")
+		{
+			timeAsInt = 43;
+		}
+		else if(time == "10:00PM")
+		{
+			timeAsInt = 44;
+		}
+		else if(time == "10:30PM")
+		{
+			timeAsInt = 45;
+		}
+		else if(time == "11:00PM")
+		{
+			timeAsInt = 46;
+		}
+		else if(time == "11:30PM")
+		{
+			timeAsInt = 47;
+		}
+		else
+		{
+			timeAsInt = 50; //random value that for all other cases that will throw an error if the time isn't one of the above.
+		}
+		return timeAsInt;
+	}
+	
+	public int twentyFourHourtoInt(String time)//this method will take a String in 24 hour and return its corresponding int. 
+	{
+		int timeAsInt; //variable that will convert string into the corresponding number
+		
+		if(time == "0:00")
+		{
+			timeAsInt = 0;
+		}
+		else if(time == "0:30")
+		{
+			timeAsInt = 1;
+		}
+		else if(time == "1:00")
+		{
+			timeAsInt = 2;
+		}
+		else if(time == "1:30")
+		{
+			timeAsInt = 3;
+		}
+		else if(time == "2:00")
+		{
+			timeAsInt = 4;
+		}
+		else if(time == "2:30")
+		{
+			timeAsInt = 5;
+		}
+		else if(time == "3:00")
+		{
+			timeAsInt = 6;
+		}
+		else if(time == "3:30")
+		{
+			timeAsInt = 7;
+		}
+		else if(time == "4:00")
+		{
+			timeAsInt = 8;
+		}
+		else if(time == "4:30")
+		{
+			timeAsInt = 9;
+		}
+		else if(time == "5:00")
+		{
+			timeAsInt = 10;
+		}
+		else if(time == "5:30")
+		{
+			timeAsInt = 11;
+		}
+		else if(time == "6:00")
+		{
+			timeAsInt = 12;
+		}
+		else if(time == "6:30")
+		{
+			timeAsInt = 13;
+		}
+		else if(time == "7:00")
+		{
+			timeAsInt = 14;
+		}
+		else if(time == "7:30")
+		{
+			timeAsInt = 15;
+		}
+		else if(time == "8:00")
+		{
+			timeAsInt = 16;
+		}
+		else if(time == "8:30")
+		{
+			timeAsInt = 17;
+		}
+		else if(time == "9:00")
+		{
+			timeAsInt = 18;
+		}
+		else if(time == "9:30")
+		{
+			timeAsInt = 19;
+		}
+		else if(time == "10:00")
+		{
+			timeAsInt = 20;
+		}
+		else if(time == "10:30")
+		{
+			timeAsInt = 21;
+		}
+		else if(time == "11:00")
+		{
+			timeAsInt = 22;
+		}
+		else if(time == "11:30")
+		{
+			timeAsInt = 23;
+		}
+		else if(time == "12:00")
+		{
+			timeAsInt = 24;
+		}
+		else if(time == "12:30")
+		{
+			timeAsInt = 25;
+		}
+		else if(time == "13:00")
+		{
+			timeAsInt = 26;
+		}
+		else if(time == "13:30")
+		{
+			timeAsInt = 27;
+		}
+		else if(time == "14:00")
+		{
+			timeAsInt = 28;
+		}
+		else if(time == "14:30")
+		{
+			timeAsInt = 29;
+		}
+		else if(time == "15:00")
+		{
+			timeAsInt = 30;
+		}
+		else if(time == "15:30")
+		{
+			timeAsInt = 31;
+		}
+		else if(time == "16:00")
+		{
+			timeAsInt = 32;
+		}
+		else if(time == "16:30")
+		{
+			timeAsInt = 33;
+		}
+		else if(time == "17:00")
+		{
+			timeAsInt = 34;
+		}
+		else if(time == "17:30")
+		{
+			timeAsInt = 35;
+		}
+		else if(time == "18:00")
+		{
+			timeAsInt = 36;
+		}
+		else if(time == "18:30")
+		{
+			timeAsInt = 37;
+		}
+		else if(time == "19:00")
+		{
+			timeAsInt = 38;
+		}
+		else if(time == "19:30")
+		{
+			timeAsInt = 39;
+		}
+		else if(time == "20:00")
+		{
+			timeAsInt = 40;
+		}
+		else if(time == "20:30")
+		{
+			timeAsInt = 41;
+		}
+		else if(time == "21:00")
+		{
+			timeAsInt = 42;
+		}
+		else if(time == "21:30")
+		{
+			timeAsInt = 43;
+		}
+		else if(time == "22:00")
+		{
+			timeAsInt = 44;
+		}
+		else if(time == "22:30")
+		{
+			timeAsInt = 45;
+		}
+		else if(time == "23:00")
+		{
+			timeAsInt = 46;
+		}
+		else if(time == "23:30")
+		{
+			timeAsInt = 47;
+		}
+		else
+		{
+			timeAsInt = 50; //random value that for all other cases that will throw an error if the time isn't one of the above.
+		}
+		return timeAsInt;
+	}
+	int choice; //int used to track choice made by user
+	String availability; //string used to store the admin avilability
+	Vector<Integer> timeVec = new Vector<Integer>() ;{ //vector that will hold ints 0-47 each which represents a certain availability.
 	for (int i = 0; i < 48; i++)
 	{
 		timeVec.addElement(i);
@@ -432,17 +840,23 @@ public class AddEvent{
 	choice = userInput.nextInt();
 	if (choice == 12)
 	{
-		for (int i=0; i<48; i++)
+		System.out.println("These are all the available time slots in 12 hour mode\n");
+		for (int i=0; i<48; i++) //prints all time slots in a day in 12 hour mode
 		{
 			System.out.println(twelveHourConversion(timeVec.get(i)));
 			System.out.println(" ");
 		}
+		//System.out.println("\n");
+		//System.out.println("Type the start time you are available: ");
+		//availability = userInput.next();
+		
 	}
 	else if (choice == 24)
 	{
 		for (int i=0; i<48; i++)
 		{
-		System.out.println(twentyFourHourConversion(timeVec.get(i)));
+			System.out.println(twentyFourHourConversion(timeVec.get(i)));
+			System.out.println(" ");
 		}
 	}	
 	else
