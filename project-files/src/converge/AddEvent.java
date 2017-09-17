@@ -21,6 +21,7 @@ public class AddEvent{
 	/**
 	 * This is a method that will take in ints placed in the availability vectors
 	 * and will convert it into its corresponding time string for 12 hour mode.
+	 * 
 	 * @param i This is the integer value given to the method.
 	 * @return A string representing the integers corresponding time string.
 	 */
@@ -226,6 +227,7 @@ public class AddEvent{
 	/**
 	 * This is a method that will take in ints places in the availability vectors
 	 * and will convert it into its corresponding time string for 24 hour mode.
+	 * 
 	 * @param i This is the integer value given to the method.
 	 * @return A string representing the integers corresponding time string.
 	 */
@@ -430,8 +432,8 @@ public class AddEvent{
 	
 	/**
 	 * Finds the current month as an integer.
+	 * 
 	 * @return an integer representing the current month.
-	 * @param None
 	 */
 	public int currentMonth() 
 	{
@@ -445,6 +447,7 @@ public class AddEvent{
 	
 	/**
 	 * Converts time strings for 12 hour mode as its corresponding integer for the availability vectors.
+	 * 
 	 * @param time The time as a string that the user inputs in 12 hour mode.
 	 * @return an integer representing the time string's corresponding integer for the availability vector.
 	 */
@@ -653,6 +656,7 @@ public class AddEvent{
 	
 	/**
 	 * Converts time strings for 24 hour mode as its corresponding integer for the availability vectors.
+	 * 
 	 * @param time The time as a string that the user inputs in 24 hour mode.
 	 * @return an integer representing the time string's corresponding integer for the availability vector.
 	 */
@@ -902,16 +906,13 @@ public class AddEvent{
 	Event adminEvent = new Event(); 
 	
 	/**
-	 * Scanner object initialized to handle user interaction
+	 * Scanner object initialized to handle user interaction.
 	 */
 	Scanner userInput = new Scanner(System.in); 
 	
 	/**
-	 * Method runs the user interaction allowing the admin to create an event
-	 * @return none
-	 * @param none
-	 * @throws IOException on input error
-	 * @see IOException
+	 * Method runs the user interaction allowing the admin to create an event.
+	 * @throws IOException On invalid user input
 	 */
 	public void start() throws IOException 
 	{
@@ -1020,8 +1021,9 @@ public class AddEvent{
 	
 	/**
 	 * This method is used to clearly print a string for better looking output.
+	 * 
 	 * @param text The string that will get clearly printed.
-	 * @return none
+	 * @throws IOException On input error.
 	 */
 	private void clearPrint(String text)
 	{
@@ -1031,8 +1033,6 @@ public class AddEvent{
 	
 	/**
 	 * This method clears the output of whatever has been previously displayed.
-	 * @return none
-	 * @param none
 	 */
 	private void clearScreen()
 	{
@@ -1044,8 +1044,8 @@ public class AddEvent{
 	
 	/**
 	 * This method requests the Admin's event date and stores it in an integer array.
+	 * 
 	 * @return an integer array that stores the date in the format mm/dd/yyyy.
-	 * @param none
 	 */
 	private int[] requestDate()
 	{
