@@ -107,7 +107,7 @@ public class Event {
 		//Close FileWriter
 		writer.flush();
 		writer.close();
-    
+	}
 	public Vector getAvailability()
 	{
 		return a_adminAvailability;
