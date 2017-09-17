@@ -23,12 +23,15 @@ public class Attendee {
 	//Constructor methods
 	/**
 	 * default constructor for the Attendee class.
+	 * @return none
+	 * @param none
 	 */
 	public Attendee() {}
 	/**
 	 * Parameterized constructor that initializes the name and availability of the attendee.
 	 * @param name String the represents the attendee's name
 	 * @param input Vector of integers that represents the attendee's availability.
+	 * @return none
 	 */
 	public Attendee(String name, Vector<Integer> input)
 	{
@@ -38,6 +41,7 @@ public class Attendee {
 	/**
 	 * Method that gets attendee's username.
 	 * @return A string representing the attendee's username.
+	 * @param none
 	 */
 	public String getName()
 	{
@@ -46,6 +50,7 @@ public class Attendee {
 	/**
 	 * Method that get's attendee's availability.
 	 * @return A vector of integers representing the attendee's availability.
+	 * @param none
 	 */
 	public Vector<Integer> getAvailability()
 	{
@@ -54,6 +59,7 @@ public class Attendee {
 	/**
 	 * Sets the attendee's username.
 	 * @param name A string containing the attendee's username.
+	 * @return none
 	 */
 	public void setName(String name)
 	{

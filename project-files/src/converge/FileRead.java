@@ -2,10 +2,31 @@ package converge;
 import java.io.*;
 import java.util.*;
 
-
+/**
+ * FileRead.java will be strictly accessed by the JoinEvents class to process
+ * existing events.
+ * 
+ * @author Pumposh Bhat
+ * @since 2017-09-15
+ */
 public class FileRead
 {
+	/**
+	 * default constructor for the FileRead class.
+	 * @return none
+	 * @param none
+	 */
 	public FileRead() {}
+	
+	/**
+	 * Method that reads and processes the .event files that are stored
+	 * in the local "event_log" directory to output a vector of event 
+	 * objects representing the existing events.
+	 * @return Vector of event type objects representing the existing events.
+	 * @param None
+	 * @throws IOException
+	 * @see IOException
+	 */
 	public Vector<Event> readEvents() throws IOException
 	{
 		//Declare List of events

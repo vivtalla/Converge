@@ -12,7 +12,6 @@ import java.util.Date;
  * @author Vivek Tallavajhala
  * @since 2017-09-15
  */
-
 public class AddEvent{
 	public static void main(String[] args) throws IOException {
 		AddEvent AdminEvent = new AddEvent();
@@ -432,6 +431,7 @@ public class AddEvent{
 	/**
 	 * Finds the current month as an integer.
 	 * @return an integer representing the current month.
+	 * @param None
 	 */
 	public int currentMonth() 
 	{
@@ -908,6 +908,8 @@ public class AddEvent{
 	
 	/**
 	 * Method runs the user interaction allowing the admin to create an event
+	 * @return none
+	 * @param none
 	 * @throws IOException on input error
 	 * @see IOException
 	 */
@@ -1019,6 +1021,7 @@ public class AddEvent{
 	/**
 	 * This method is used to clearly print a string for better looking output.
 	 * @param text The string that will get clearly printed.
+	 * @return none
 	 */
 	private void clearPrint(String text)
 	{
@@ -1028,6 +1031,8 @@ public class AddEvent{
 	
 	/**
 	 * This method clears the output of whatever has been previously displayed.
+	 * @return none
+	 * @param none
 	 */
 	private void clearScreen()
 	{
@@ -1040,6 +1045,7 @@ public class AddEvent{
 	/**
 	 * This method requests the Admin's event date and stores it in an integer array.
 	 * @return an integer array that stores the date in the format mm/dd/yyyy.
+	 * @param none
 	 */
 	private int[] requestDate()
 	{
