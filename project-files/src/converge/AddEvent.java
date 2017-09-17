@@ -2,9 +2,15 @@ package converge;
 
 import java.util.Scanner;
 import java.util.Vector;
+import java.util.Calendar;
+import java.util.Date;
 
 public class AddEvent{
-	
+	/*public static void main(String[] args) {
+		AddEvent AdminEvent = new AddEvent();
+		AdminEvent.start();
+	}
+	*/
 	public String twelveHourConversion(int i) //method will convert the ints placed in the vectors to the needed strings for 12 hour mode
 	{
 		String conversion = "\0";
@@ -204,7 +210,7 @@ public class AddEvent{
 		return conversion;
 	}
 	
-	public String twentyFourHourConversion(int i) //method converts ints in vecs into corresponding strings for 24:00 hour mode;
+	public String twentyFourHourConversion(int i) //method converts ints in vectors into corresponding strings for 24:00 hour mode;
 	{
 		String conversion = "\0";
 		
@@ -601,7 +607,7 @@ public class AddEvent{
 		}
 		else
 		{
-			timeAsInt = 50; //random value that for all other cases that will throw an error if the time isn't one of the above.
+			timeAsInt = 50; //sets TimeAsInt to 50 for all other cases s it can throw an error if the time isn't one of the above.
 		}
 		return timeAsInt;
 	}
@@ -804,35 +810,88 @@ public class AddEvent{
 		}
 		else
 		{
-			timeAsInt = 50; //random value that for all other cases that will throw an error if the time isn't one of the above.
+			timeAsInt = 50; //sets timeAsInt to 50 so that it can throw an error if the time isn't one of the allowed ones above.
 		}
 		return timeAsInt;
 	}
+	
+	public int currentMonth() //method calculates the c
+	{
+		int month;
+		java.util.Date date = new Date();
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(date);
+		month = cal.get(Calendar.MONTH);
+		return month;
+	}
+	
 	int choice; //int used to track choice made by user
+	
+	int currentYear = Calendar.getInstance().get(Calendar.YEAR); //uses calendar package to get the current year.
+	
 	String startAvailability; //string used to store the start of the admin availability
+	
 	String endAvailability; //string used to store the end of the admin availability
+	
 	Vector<Integer> timeVec = new Vector<Integer>() ;{ //vector that will hold ints 0-47 each which represents a certain availability.
 	for (int i = 0; i < 48; i++)
 	{
 		timeVec.addElement(i);
 	}
-	Event adminEvent = new Event();
+	}
 	
+	Event adminEvent = new Event(); //Event object that will create the adminEvent
+	
+	public void start() //method that will run the user interaciton
+	{
 	Scanner userInput = new Scanner(System.in); //Scanner object allows for user input
 	
-	System.out.println("Enter the name of the event: ");
+	System.out.println("Enter the name of the event: ");//prompt for name
+	adminEvent.setEventName(userInput.next());//sets Name of the event to the string the user inputs
 	
-	adminEvent.setEventName(userInput.next());
-	
-	System.out.println("Enter the year of the event as an integer: ");
-	adminEvent.setYear(userInput.nextInt());
+	System.out.println("Enter the year of the event as an integer: ");//prompt for year of event
+	//adminEvent.setYear(userInput.nextInt());//might not need this here because of way scanner object works
+	while(!userInput.hasNextInt()) //repeat until user enters an integer
+	{
+		userInput.next(); //Read and discard offending non-int input
+		System.out.print("The item entered was not an int.\n"); //Re-prompt
+		System.out.print("Please enter the year as an integer: ");
+		
+	//at this point the user has entered an integer
+	while(userInput.nextInt() < currentYear) //checks to see if the year the user input is less than the current year
+	{
+		System.out.println("The year you have entered is in the past. This is an invald year.\n");
+		System.out.println("Please enter a valid year: ");
+		//adminEvent.setYear(userInput.nextInt());//might not need this here because of way scanner objects work
+	}//ends while loop that checks of the user entered a year less than the current year
+	}//ends while loop that forces good input from user
+	adminEvent.setYear(userInput.nextInt()); //sets the year of the admin Event to whatever the user has input
 	
 	System.out.println("Enter the Month of the event as an integer: ");
-	
-	adminEvent.setMonth(userInput.nextInt());
+	//adminEvent.setMonth(userInput.nextInt());//might not need this because of way scanner object works
+	while(!userInput.hasNextInt()) //repeat until user enters an integer
+	{
+		userInput.next(); //Read and discard offending non-int input
+		System.out.println("The item entered was not an int.\n"); //Re-prompt
+		System.out.println("Please enter the month as an integer: ");
+	while( userInput.nextInt() <= 0 || userInput.nextInt() > 12)
+	{
+		System.out.println("The integer you entered is not a valid month\n");
+		System.out.println("Please Enter an Int between 0 and 12: ");
+	}
+	if(adminEvent.getYear() == currentYear)
+	{
+	while(userInput.nextInt() < currentMonth())
+	{
+		System.out.println("The current Month entered was in the past.\n");
+		System.out.println("Please Enter a Valid Month; ");
+		//adminEvent.setMonth(userInput.nextInt());//might not need this because of way scanner object works
+	}
+	}
+	}
+	adminEvent.setMonth(userInput.nextInt());//sets month to user's value
 	
 	System.out.println("Enter the Day of the event as an integer: ");
-	
 	adminEvent.setDay(userInput.nextInt());
 	
 	System.out.println("Would you like the time to be displayed in 12 hour or 24 hour mode?\n");
@@ -863,7 +922,7 @@ public class AddEvent{
 		endAvailability = userInput.next();
 		while( (twelveHourtoInt( endAvailability ) == 50) || (twelveHourtoInt(endAvailability) < twelveHourtoInt(startAvailability)) ) //checks to see if the time the user input was valid
 		{
-			if (twelveHourtoInt( endAvailability ) == 50) //if the String the user input isn't valid
+			if (twelveHourtoInt( endAvailability ) == 50) //checks if the String the user input isn't valid
 			{
 				System.out.println("Invalid Input. Please type the end time of your availability in the same format as below.\n");
 				System.out.println("For Example: If you are available until 5PM, type '5:00PM' \n");
@@ -882,15 +941,39 @@ public class AddEvent{
 		{
 			adminEvent.a_adminAvailability.addElement(i); //adds the availability times of the admin
 		}
-			
-		
 	}
 	else if (choice == 24)
 	{
 		for (int i=0; i<48; i++)
 		{
-			System.out.println(twentyFourHourConversion(timeVec.get(i)));
+			System.out.println(twentyFourHourConversion(timeVec.get(i))); //prints all the times in 24 hour mode
 			System.out.println(" ");
+		}
+		System.out.println("\n");
+		System.out.println("When you type in your availability, type them in the format above.\n");
+		System.out.println("For Example: If you wanted to start at 2 AM, type '2:00'\n");
+		System.out.println("Type the start time you are available: ");
+		
+		while( (twentyFourHourtoInt( endAvailability ) == 50) || (twentyFourHourtoInt(endAvailability) < twentyFourHourtoInt(startAvailability)) ) //checks to see if the time the user input was valid
+		{
+			if (twentyFourHourtoInt( endAvailability ) == 50) //checks if the String the user input isn't valid
+			{
+				System.out.println("Invalid Input. Please type the end time of your availability in the same format as below.\n");
+				System.out.println("For Example: If you are available until 1PM, type '13:00' \n");
+				System.out.println("Available until: ");
+				endAvailability = userInput.next();
+			}
+			else if (twentyFourHourtoInt(endAvailability) < twentyFourHourtoInt(startAvailability)) //if the time the user input is before their start time
+			{
+				System.out.println("Please input an ending time that is after the start time you have indicated\n");
+				System.out.println("Available until: ");
+				endAvailability = userInput.next();
+			}
+		}
+		
+		for( int i = twentyFourHourtoInt(startAvailability); i<twentyFourHourtoInt(endAvailability); i++)
+		{
+			adminEvent.a_adminAvailability.addElement(i); //adds the availability times of the admin
 		}
 	}	
 	else
@@ -898,10 +981,7 @@ public class AddEvent{
 		System.out.println("That is an invalid choice. Please select 12 for 12 hour mode and 24 for 24 hour mode\n");
 		System.out.println("Choice: ");
 	}
-	
-	
-	
 	userInput.close();
-}
-}
+} //ends start method	
+} //ends AddEvent class
 
