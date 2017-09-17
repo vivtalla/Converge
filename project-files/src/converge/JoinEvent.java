@@ -3,7 +3,7 @@ import java.io.IOException;
 import java.util.Vector;
 import java.util.Scanner;
 
-public class joinEvent {
+public class JoinEvent {
 	static void run()throws IOException {
 		FileRead fr = new FileRead();
 		Vector<Event> events = fr.readEvents();
