@@ -3,17 +3,47 @@ import java.io.IOException;
 import java.util.Vector;
 import java.util.Scanner;
 
-public class JoinEvent {
+/**
+ * The JoinEvent.java file will be used to implement the Attendee Mode for the Converge Application
+ * 
+ * @author Menita Vedantam
+ * @since 2017-09-15
+ */
+
+public class joinEvent {
+	/**
+	 * This method will be called when the user selects join event in main.
+	 * @param
+	 * @return
+	 */
 	static void run()throws IOException {
 		FileRead fr = new FileRead();
+		/** 
+		 * vector used to access already created events
+		 */
 		Vector<Event> events = fr.readEvents();
+		/** 
+		 * vector used to hold the user's available times.
+		 */
 		Vector<Integer> times=new Vector<Integer>();
 		Scanner myScan = new Scanner(System.in);
+		/** 
+		 * string that takes the user's name.
+		 */
 		String userName = "";
+		/** 
+		 * int that stores the user's choice in which event to join.
+		 */
 		int eventChoice = 0;
+		/** 
+		 * int that stores the user's choice in 12/24 hour mode for time representation.
+		 */
 		int timeChoice = 0;
 		clearPrint("Please enter your name.");
 		userName = myScan.nextLine();
+		/** 
+		 * boolean value that verifies proper input.
+		 */
 		boolean invalidInput = true;
 		clearScreen();
 		while(invalidInput) 
@@ -36,6 +66,9 @@ public class JoinEvent {
 				}
 		}
 				clearScreen();
+				/** 
+				 * boolean value that verifies proper input.
+				 */
 				boolean wrongFormat = true;
 				while (wrongFormat) {
 					System.out.println("12 Hour / 24 Hour Mode? (12/24):");	
@@ -69,16 +102,31 @@ public class JoinEvent {
 						clearPrint("Error\nThe selection is invalid.\n");
 					}
 				}
+				/** 
+				 * boolean value that verifies proper input.
+				 */
 				boolean correctTime = false;
 				while(!correctTime) {
-					System.out.println("Please enter all the times you are available within the given time options(seperate with commas).");
+					System.out.println("Please enter all the times you are available within the given time options(seperate with spaces).");
+					/** 
+					 * string that holds the user's availability input.
+					 */
 					String s = "";
 					myScan.nextLine();
 					s = myScan.nextLine();
+					/** 
+					 * array that holds the separated user's availability input.
+					 */
 					String[] temp = s.split(",");
 					for(int i = 0; i<temp.length; i++) 
 					{
+						/** 
+						 * boolean value that verifies proper input.
+						 */
 						boolean correctValueFound = false;
+						/** 
+						 * integer used to move the user's separated input into time vector.
+						 */
 						Integer num = twelveHourtoInt(temp[i]);
 						for(int j=0; j<events.elementAt(eventChoice-1).getAvailability().size(); j++) 
 						{
@@ -124,13 +172,21 @@ public class JoinEvent {
 					}
 				}
 				System.out.println(times);
+				/** 
+				 * new attendee object created.
+				 */
 				Attendee a = new Attendee(userName, times);
 				events.elementAt(eventChoice).a_attendees.add(a);
 				events.elementAt(eventChoice).exportEvent();
 				clearPrint("You have successfully been added to the event " + events.elementAt(eventChoice).getEventName() + "!");
 
 	}
-	static int twelveHourtoInt(String time)//this method will take a String in 12 hour and return its corresponding int. 
+		/**
+		 * Converts time strings for 12 hour mode as its corresponding integer for the availability vectors.
+		 * @param time The time as a string that the user inputs in 12 hour mode.
+		 * @return an integer representing the time string's corresponding integer for the availability vector.
+		 */
+	static int twelveHourtoInt(String time)
 	{
 		int timeAsInt; //variable that will convert string into the corresponding number
 		
@@ -331,9 +387,13 @@ public class JoinEvent {
 			timeAsInt = 50; //random value that for all other cases that will throw an error if the time isn't one of the above.
 		}
 		return timeAsInt;
-	}
-	
-	static int twentyFourHourtoInt(String time)//this method will take a String in 24 hour and return its corresponding int. 
+	} 
+		/**
+		 * Converts time strings for 24 hour mode as its corresponding integer for the availability vectors.
+		 * @param time The time as a string that the user inputs in 24 hour mode.
+		 * @return an integer representing the time string's corresponding integer for the availability vector.
+		 */
+	static int twentyFourHourtoInt(String time)
 	{
 		int timeAsInt; //variable that will convert string into the corresponding number
 		
