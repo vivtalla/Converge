@@ -12,49 +12,61 @@ public class JoinEvent {
 		String userName = "";
 		int eventChoice = 0;
 		int timeChoice = 0;
-		System.out.println("Please enter your name.");
+		clearPrint("Please enter your name.");
 		userName = myScan.nextLine();
 		boolean invalidInput = true;
-		while(invalidInput) {
+		clearScreen();
+		while(invalidInput) 
+		{
 			System.out.println("Which event would you like to join?");
-			System.out.println("Please enter the number cooresponding to your event choice.");
-			for(int i=0; i<events.size(); i++) {
+			System.out.println("Please enter the number cooresponding to your event choice.\n");
+			for(int i=0; i<events.size(); i++) 
+			{
 				System.out.println((i+1)+". "+events.elementAt(i).getEventName());
 			}
 				eventChoice = myScan.nextInt();
-				if(eventChoice > events.size() || eventChoice < 1) {
-					System.out.println("Invalid input. Please enter correct time format.");
+				if(eventChoice > events.size() || eventChoice < 1) 
+				{
+					clearPrint("Error\nThe selection is invalid.\n");
 					invalidInput = true;
 				}
-				else {
+				else 
+				{
 					invalidInput = false;
 				}
 		}
+				clearScreen();
 				boolean wrongFormat = true;
 				while (wrongFormat) {
-					System.out.println("Enter 12 for time options in Standard time.");
-					System.out.println("Enter 24 for time options in Military time.");
+					System.out.println("12 Hour / 24 Hour Mode? (12/24):");	
 					timeChoice = myScan.nextInt();
-					if(timeChoice == 12) {
-						System.out.println("The available times:");
-						for(int i=0; i<events.size(); i++) {
-							if(i+1 == eventChoice) {
+					if(timeChoice == 12) 
+					{
+						clearPrint("The available times:");
+						for(int i=0; i<events.size(); i++) 
+						{
+							if(i+1 == eventChoice) 
+							{
 								events.elementAt(i).get12HourAvailability();
 							}
 						}
 						wrongFormat = false;
 					}
-					else if(timeChoice == 24) {
-						System.out.println("The available times:");
-						for(int i=0; i<events.size(); i++) {
-							if(i+1 == eventChoice) {
+					else if(timeChoice == 24) 
+					{
+						clearPrint("The available times:");
+						for(int i=0; i<events.size(); i++) 
+						{
+							if(i+1 == eventChoice) 
+							{
 								events.elementAt(i).get24HourAvailability();
 							}
 						}
 						wrongFormat = false;
 					}
-					else {
-						System.out.println("Invalid input. Try again.");
+					else
+					{
+						clearPrint("Error\nThe selection is invalid.\n");
 					}
 				}
 				boolean correctTime = false;
@@ -64,20 +76,46 @@ public class JoinEvent {
 					myScan.nextLine();
 					s = myScan.nextLine();
 					String[] temp = s.split(",");
-					for(int i = 0; i<temp.length; i++) {
+					for(int i = 0; i<temp.length; i++) 
+					{
 						boolean correctValueFound = false;
 						Integer num = twelveHourtoInt(temp[i]);
-						for(int j=0; j<events.elementAt(eventChoice-1).getAvailability().size(); j++) {
-							if(num == events.elementAt(eventChoice-1).getAvailability().elementAt(j)) {
+						for(int j=0; j<events.elementAt(eventChoice-1).getAvailability().size(); j++) 
+						{
+							if(num == events.elementAt(eventChoice-1).getAvailability().elementAt(j)) 
+							{
 								j=events.elementAt(eventChoice-1).getAvailability().size();
 								correctValueFound = true;
 								times.add(num);
 							}
 						}
-						if(!correctValueFound) {
+						if(!correctValueFound) 
+						{
 							i = temp.length;
 							correctTime = false;
-							System.out.println("Incorrect input. Try again.");
+							clearPrint("Error\nThe values inputted are invalid.");
+							if(timeChoice == 12) 
+							{
+								System.out.println("The available times:");
+								for(int j=0; j<events.size(); j++) 
+								{
+									if(j+1 == eventChoice) 
+									{
+										events.elementAt(j).get12HourAvailability();
+									}
+								}
+							}
+							else if(timeChoice == 24) 
+							{
+								System.out.println("The available times:");
+								for(int j=0; j<events.size(); j++) 
+								{
+									if(j+1 == eventChoice) 
+									{
+										events.elementAt(j).get24HourAvailability();
+									}
+								}
+							}
 						}
 						else
 						{
@@ -88,6 +126,9 @@ public class JoinEvent {
 				System.out.println(times);
 				Attendee a = new Attendee(userName, times);
 				events.elementAt(eventChoice).a_attendees.add(a);
+				events.elementAt(eventChoice).exportEvent();
+				clearPrint("You have successfully been added to the event " + events.elementAt(eventChoice).getEventName() + "!");
+
 	}
 	static int twelveHourtoInt(String time)//this method will take a String in 12 hour and return its corresponding int. 
 	{
@@ -493,5 +534,19 @@ public class JoinEvent {
 			timeAsInt = 50; //random value that for all other cases that will throw an error if the time isn't one of the above.
 		}
 		return timeAsInt;
+	}
+
+	private static void clearPrint(String text)
+	{
+		clearScreen();
+		System.out.println(text);
+	}
+	
+	private static void clearScreen()
+	{
+		for (int i = 0; i < 100; i++)
+		{
+			System.out.println("\n");
+		}
 	}
 }
