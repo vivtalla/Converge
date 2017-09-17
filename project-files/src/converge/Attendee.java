@@ -21,4 +21,8 @@ public class Attendee {
 	{
 		return availability;
 	}
+	public void setName(String name)
+	{
+		userName = name;
+	}
 }
