@@ -6,6 +6,13 @@ import java.io.IOException;
 import java.util.Calendar;
 import java.util.Date;
 
+/**
+ * The AddEvent.java file will be used to implement the Admin Mode for the Converge Application
+ * 
+ * @author Vivek Tallavajhala
+ * @since 2017-09-15
+ */
+
 public class AddEvent{
 	public static void main(String[] args) throws IOException {
 		AddEvent AdminEvent = new AddEvent();
@@ -13,6 +20,12 @@ public class AddEvent{
 	}
 	
 	//method will convert the ints placed in the vectors to the needed strings for 12 hour mode
+	/**
+	 * This is a method that will take in ints placed in the availability vectors
+	 * and will convert it into its corresponding time string for 12 hour mode.
+	 * @param i This is the integer value given to the method.
+	 * @return A string representing the integers corresponding time string.
+	 */
 	public String twelveHourConversion(int i) 
 	{
 		String conversion = "\0";
@@ -213,6 +226,12 @@ public class AddEvent{
 	}
 	
 	//method converts ints in vectors into corresponding strings for 24:00 hour mode
+	/**
+	 * This is a method that will take in ints places in the availability vectors
+	 * and will convert it into its corresponding time string for 24 hour mode.
+	 * @param i This is the integer value given to the method.
+	 * @return A string representing the integers corresponding time string.
+	 */
 	public String twentyFourHourConversion(int i) 
 	{
 		String conversion = "\0";
@@ -413,6 +432,10 @@ public class AddEvent{
 	}
 	
 	//method calculates the current month
+	/**
+	 * Finds the current month as an integer.
+	 * @return an integer representing the current month.
+	 */
 	public int currentMonth() 
 	{
 		int month;
@@ -424,6 +447,11 @@ public class AddEvent{
 	}
 	
 	//this method will take a String in 12 hour and return its corresponding int. 
+	/**
+	 * Converts time strings for 12 hour mode as its corresponding integer for the availability vectors.
+	 * @param time The time as a string that the user inputs in 12 hour mode.
+	 * @return an integer representing the time string's corresponding integer for the availability vector.
+	 */
 	public static int twelveHourtoInt(String time)
 	{
 		int timeAsInt; //variable that will convert string into the corresponding number
@@ -628,6 +656,11 @@ public class AddEvent{
 	}
 	
 	//this method will take a String in 24 hour and return its corresponding int. 
+	/**
+	 * Converts time strings for 24 hour mode as its corresponding integer for the availability vectors.
+	 * @param time The time as a string that the user inputs in 24 hour mode.
+	 * @return an integer representing the time string's corresponding integer for the availability vector.
+	 */
 	public static int twentyFourHourtoInt(String time)
 	{
 		int timeAsInt; //variable that will convert string into the corresponding number
@@ -832,18 +865,34 @@ public class AddEvent{
 	}
 	
 	//int used to track choice made by user
+	/** 
+	 * integer used to track the user's choice input.
+	 */
 	int choice; 
 	
 	//uses calendar package to get the current year.
+	/**
+	 * integer used to track the current year.
+	 */
 	int currentYear = Calendar.getInstance().get(Calendar.YEAR); 
 	
 	//string used to store the start of the admin availability
+	/**
+	 * string used to store the starting availability of the admin.
+	 */
 	String startAvailability; 
 	
 	//string used to store the end of the admin availability
+	/**
+	 * string used to store the ending availability of the admin.
+	 */
 	String endAvailability; 
 	
 	//vector that will hold ints 0-47 each which represents a certain availability.
+	/**
+	 * vector that hold integers 0-47 that each represent time availability in 30
+	 * minute periods throughout the day.
+	 */
 	Vector<Integer> timeVec = new Vector<Integer>() ;
 	{ 
 	for (int i = 0; i < 48; i++)
@@ -851,8 +900,11 @@ public class AddEvent{
 			timeVec.addElement(i);
 		}
 	}
-	
+
 	//Attendee object for admin
+	/**
+	 * attendee object created for the admin.
+	 */
 	Attendee admin = new Attendee();
 	
 	//Event object that will create the adminEvent
