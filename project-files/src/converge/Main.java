@@ -57,22 +57,38 @@ public class Main {
 				System.out.println("Invalid input. Try again.");
 			}
 		}
-//		boolean incorrectTime = true;
-	//	while (incorrectTime) {
-			System.out.println("Please enter all the times you are available within the given time options(seperate with commas).");
-			String s = "";
-			myScan.nextLine();
-			s = myScan.nextLine();
-			String[] temp = s.split(",");
-			for(int i = 0; i<temp.length; i++) {
-				System.out.print(temp[i]+"  ");
-				int num = twelveHourtoInt(temp[i]);
-				System.out.print(num+"  ");
+			boolean correctTime = false;
+			while(!correctTime) {
+				System.out.println("Please enter all the times you are available within the given time options(seperate with commas).");
+				String s = "";
+				myScan.nextLine();
+				s = myScan.nextLine();
+				String[] temp = s.split(",");
+				for(int i = 0; i<temp.length; i++) {
+					boolean correctValueFound = false;
+					Integer num = twelveHourtoInt(temp[i]);
+					for(int j=0; j<events.elementAt(eventChoice-1).getAvailability().size(); j++) {
+						if(num == events.elementAt(eventChoice-1).getAvailability().elementAt(j)) {
+							j=events.elementAt(eventChoice-1).getAvailability().size();
+							correctValueFound = true;
+							times.add(num);
+						}
+					}
+					if(!correctValueFound) {
+						i = temp.length;
+						correctTime = false;
+						System.out.println("Incorrect input. Try again.");
+					}
+					else
+					{
+						correctTime = true;
+					}
+				}
 			}
-		//	incorrectTime = false;
+			System.out.println(times);
+			Attendee a = new Attendee(userName, times);
+			events.elementAt(eventChoice).a_attendees.add(a);
 		}
-	//	System.out.println(times);
-	//}
 	static int twelveHourtoInt(String time)//this method will take a String in 12 hour and return its corresponding int. 
 	{
 		int timeAsInt; //variable that will convert string into the corresponding number

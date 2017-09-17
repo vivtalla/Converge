@@ -68,9 +68,9 @@ public class Event {
 		return a_year;
 	}
 	
-	private static void exportEvents()
+	public Vector getAvailability()
 	{
-		
+		return a_adminAvailability;
 	}
 	public void get12HourAvailability() {
 		for(int i= 0; i < a_adminAvailability.size(); i++) {
