@@ -74,7 +74,7 @@ public class Event {
 	{
 		a_attendees.add(a);
 	}
-	private void exportEvents() throws IOException
+	public void exportEvent() throws IOException
 	{
 		//Export file to .event file in /event_log/ directory
 		String filename = "event_log/" + a_eventName.replaceAll("\\s+","") + ".event";
