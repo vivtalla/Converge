@@ -19,7 +19,6 @@ public class AddEvent{
 		AdminEvent.start();
 	}
 	
-	//method will convert the ints placed in the vectors to the needed strings for 12 hour mode
 	/**
 	 * This is a method that will take in ints placed in the availability vectors
 	 * and will convert it into its corresponding time string for 12 hour mode.
@@ -225,7 +224,6 @@ public class AddEvent{
 		return conversion;
 	}
 	
-	//method converts ints in vectors into corresponding strings for 24:00 hour mode
 	/**
 	 * This is a method that will take in ints places in the availability vectors
 	 * and will convert it into its corresponding time string for 24 hour mode.
@@ -431,7 +429,6 @@ public class AddEvent{
 		return conversion;
 	}
 	
-	//method calculates the current month
 	/**
 	 * Finds the current month as an integer.
 	 * @return an integer representing the current month.
@@ -446,7 +443,6 @@ public class AddEvent{
 		return month;
 	}
 	
-	//this method will take a String in 12 hour and return its corresponding int. 
 	/**
 	 * Converts time strings for 12 hour mode as its corresponding integer for the availability vectors.
 	 * @param time The time as a string that the user inputs in 12 hour mode.
@@ -655,7 +651,6 @@ public class AddEvent{
 		return timeAsInt;
 	}
 	
-	//this method will take a String in 24 hour and return its corresponding int. 
 	/**
 	 * Converts time strings for 24 hour mode as its corresponding integer for the availability vectors.
 	 * @param time The time as a string that the user inputs in 24 hour mode.
@@ -864,31 +859,26 @@ public class AddEvent{
 		return timeAsInt;
 	}
 	
-	//int used to track choice made by user
 	/** 
 	 * integer used to track the user's choice input.
 	 */
 	int choice; 
 	
-	//uses calendar package to get the current year.
 	/**
 	 * integer used to track the current year.
 	 */
 	int currentYear = Calendar.getInstance().get(Calendar.YEAR); 
 	
-	//string used to store the start of the admin availability
 	/**
 	 * string used to store the starting availability of the admin.
 	 */
 	String startAvailability; 
 	
-	//string used to store the end of the admin availability
 	/**
 	 * string used to store the ending availability of the admin.
 	 */
 	String endAvailability; 
 	
-	//vector that will hold ints 0-47 each which represents a certain availability.
 	/**
 	 * vector that hold integers 0-47 that each represent time availability in 30
 	 * minute periods throughout the day.
@@ -901,19 +891,26 @@ public class AddEvent{
 		}
 	}
 
-	//Attendee object for admin
 	/**
 	 * attendee object created for the admin.
 	 */
 	Attendee admin = new Attendee();
 	
-	//Event object that will create the adminEvent
+	/**
+	 * Event object initialized to later store all admin event information.
+	 */
 	Event adminEvent = new Event(); 
 	
-	//Scanner object allows for user input
+	/**
+	 * Scanner object initialized to handle user interaction
+	 */
 	Scanner userInput = new Scanner(System.in); 
 	
-	//method that will run the user interaciton
+	/**
+	 * Method runs the user interaction allowing the admin to create an event
+	 * @throws IOException on input error
+	 * @see IOException
+	 */
 	public void start() throws IOException 
 	{
 		//prompt for name
@@ -1019,12 +1016,19 @@ public class AddEvent{
 		clearPrint("The event " + adminEvent.getEventName() + " has been successfully created!");
 	} //ends start method
 	
+	/**
+	 * This method is used to clearly print a string for better looking output.
+	 * @param text The string that will get clearly printed.
+	 */
 	private void clearPrint(String text)
 	{
 		clearScreen();
 		System.out.println(text);
 	}
 	
+	/**
+	 * This method clears the output of whatever has been previously displayed.
+	 */
 	private void clearScreen()
 	{
 		for (int i = 0; i < 100; i++)
@@ -1033,6 +1037,10 @@ public class AddEvent{
 		}
 	}
 	
+	/**
+	 * This method requests the Admin's event date and stores it in an integer array.
+	 * @return an integer array that stores the date in the format mm/dd/yyyy.
+	 */
 	private int[] requestDate()
 	{
 		int year = 0;
