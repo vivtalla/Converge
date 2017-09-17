@@ -19,7 +19,7 @@ public class Event {
 		a_year = year;
 		a_attendees = attendees;
 		a_adminAvailability = adminAvailability;
-		
+
 	}
 	public void print()
 	{
@@ -70,7 +70,7 @@ public class Event {
 	{
 		return a_year;
 	}
-  
+
 	public void addAttendee(Attendee a)
 	{
 		a_attendees.add(a);
@@ -80,21 +80,21 @@ public class Event {
 		//Export file to .event file in /event_log/ directory
 		String filename = "event_log/" + a_eventName.replaceAll("\\s+","") + ".event";
 		FileWriter writer = new FileWriter(filename);
-		
+
 		//Output name and date accordingly
 		writer.write(a_eventName + "\n");
 		writer.write(a_month + " " + a_day + " " + a_year + "\n");
-		
+
 		//Output the admin availability vector
 		for (int i = 0; i < a_adminAvailability.size(); i++)
 		{
 			writer.write(a_adminAvailability.get(i) + " ");
 		}
 		writer.write("\n");
-		
+
 		//Iterate through attendees lines
 		for (int i = 0; i < a_attendees.size(); i++)
-		{		
+		{
 			//Output the name and availability of the attendee
 			writer.write(a_attendees.get(i).getName() + " ");
 			for (int j = 0; j < a_attendees.get(i).getAvailability().size(); j++)
@@ -103,7 +103,7 @@ public class Event {
 			}
 			writer.write("\n");
 		}
-		
+
 		//Close FileWriter
 		writer.flush();
 		writer.close();
@@ -114,7 +114,7 @@ public class Event {
 	}
 	public void get12HourAvailability() {
 		for(int i= 0; i < a_adminAvailability.size(); i++) {
-			
+
 			if(a_adminAvailability.elementAt(i) == 0) {
 				System.out.println("12:00AM ");
 			}
@@ -263,7 +263,7 @@ public class Event {
 	}
 	public void get24HourAvailability() {
 		for(int i= 0; i < a_adminAvailability.size(); i++) {
-			
+
 			if(a_adminAvailability.elementAt(i) == 0) {
 				System.out.println("00:00 ");
 			}
