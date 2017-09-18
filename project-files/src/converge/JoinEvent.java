@@ -10,11 +10,9 @@ import java.util.Scanner;
  * @since 2017-09-15
  */
 
-public class joinEvent {
+public class JoinEvent {
 	/**
 	 * This method will be called when the user selects join event in main.
-	 * @param
-	 * @return
 	 */
 	static void run()throws IOException {
 		FileRead fr = new FileRead();
@@ -183,6 +181,7 @@ public class joinEvent {
 	}
 		/**
 		 * Converts time strings for 12 hour mode as its corresponding integer for the availability vectors.
+		 * 
 		 * @param time The time as a string that the user inputs in 12 hour mode.
 		 * @return an integer representing the time string's corresponding integer for the availability vector.
 		 */
@@ -390,6 +389,7 @@ public class joinEvent {
 	} 
 		/**
 		 * Converts time strings for 24 hour mode as its corresponding integer for the availability vectors.
+		 * 
 		 * @param time The time as a string that the user inputs in 24 hour mode.
 		 * @return an integer representing the time string's corresponding integer for the availability vector.
 		 */
@@ -596,12 +596,21 @@ public class joinEvent {
 		return timeAsInt;
 	}
 
+	/**
+	 * This method is used to clearly print a string for better looking output.
+	 * 
+	 * @param text The string that will get clearly printed.
+	 * @throws IOException On input error.
+	 */
 	private static void clearPrint(String text)
 	{
 		clearScreen();
 		System.out.println(text);
 	}
 	
+	/**
+	 * This method clears the output of whatever has been previously displayed.
+	 */
 	private static void clearScreen()
 	{
 		for (int i = 0; i < 100; i++)

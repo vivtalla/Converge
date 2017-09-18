@@ -2,7 +2,7 @@ package converge;
 import java.util.*;
 
 /**
- * The Attendee.java file implements the class Attendee that store's information
+ * The Attendee.java file implements the class Attendee that store's the attendee's information
  * needed to join an event.
  * 
  * @author Vivek Tallavajhala

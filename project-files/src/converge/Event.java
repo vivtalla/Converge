@@ -3,14 +3,55 @@ package converge;
 import java.io.*;
 import java.util.*;
 
+/**
+ * The Event.java file is used to implement the Event class that stores the information needed
+ * for an event to be created.
+ * 
+ * @author Vivek Tallavajhala
+ * @since 2017-09-15
+ */
 public class Event {
+	/**
+	 * String used to store the name of the event.
+	 */
 	String a_eventName;
+	/**
+	 * int used to store the month of the event.
+	 */
 	int a_month;
+	/**
+	 * int used to store the day of the event.
+	 */
 	int a_day;
+	/**
+	 * int used to store the year of the event.
+	 */
 	int a_year;
+	/**
+	 * Vector of attendees used to store all the attendees able to go to the event
+	 * along with all their information specified in the attendee class.
+	 */
 	Vector<Attendee> a_attendees = new Vector<Attendee>();
+	/**
+	 * Vector of integers used to store the admins availability.
+	 */
 	Vector<Integer> a_adminAvailability = new Vector<Integer>();
+	/**
+	 * Default constructor for the Event class.
+	 */
 	public Event() {}
+	/**
+	 * Parameterized constructor that sets the name, month, day, year, attendees information,
+	 * and admin availability of the event.
+	 * 
+	 * @param eventName string that stores the name of the event
+	 * @param month int that stores the month of the event
+	 * @param day int that stores the day of the event
+	 * @param year int that stores the year of the event
+	 * @param attendees vector of attendees holding the information of all the attendees
+	 * able to attend the event.
+	 * @param adminAvailability vector of integers storing the availability of the admin.
+	 */
 	public Event(String eventName, int month, int day, int year, Vector attendees, Vector adminAvailability )
 	{
 		a_eventName = eventName;
@@ -21,6 +62,9 @@ public class Event {
 		a_adminAvailability = adminAvailability;
 
 	}
+	/**
+	 * method that prints all information of the event
+	 */
 	public void print()
 	{
 		System.out.println(a_eventName);
@@ -34,47 +78,102 @@ public class Event {
 			System.out.println(a.getName() + a.getAvailability());
 		}
 	}
+	/**
+	 * Method that returns the admin's username.
+	 * 
+	 * @return A string that is the Admin's username.
+	 */
 	public String getAdminName()
 	{
 		return a_attendees.get(0).getName();
 	}
+	/**
+	 * method that sets the name of the event.
+	 * 
+	 * @param eventName string that represents the name of the event.
+	 */
 	public void setEventName(String eventName)
 	{
 		a_eventName = eventName;
 	}
+	/**
+	 * method that gets the event name.
+	 * 
+	 * @return A string that is the name of the event.
+	 */
 	public String getEventName()
 	{
 		return a_eventName;
 	}
+	/**
+	 * method that sets the month of the event
+	 * 
+	 * @param month an integer that represents the month of the event.
+	 */
 	public void setMonth(int month)
 	{
 		a_month = month;
 	}
+	/**
+	 * method that gets the month of the event.
+	 * 
+	 * @return an integer illustrating the month of the event.
+	 */
 	public int getMonth()
 	{
 		return a_month;
 	}
+	/**
+	 * method that sets the day of the event.
+	 * 
+	 * @param day an integer that represents the day of the event.
+	 */
 	public void setDay(int day)
 	{
 		a_day = day;
 	}
+	/**
+	 * method that gets the day of the event.
+	 * 
+	 * @return an integer representing the day of the event.
+	 */
 	public int getDay()
 	{
 		return a_day;
 	}
+	/**
+	 * method to set the year of the event.
+	 * 
+	 * @param year integer that represents the year of the event.
+	 */
 	public void setYear(int year)
 	{
 		a_year = year;
 	}
+	/**
+	 * method that gets the year of the event.
+	 * 
+	 * @return an integer that represents the year of the event.
+	 */
 	public int getYear()
 	{
 		return a_year;
 	}
 
+	/**
+	 * method that adds an attendee to the attendee vector.
+	 * 
+	 * @param a the attendee being added to the attendee vector.
+	 */
 	public void addAttendee(Attendee a)
 	{
 		a_attendees.add(a);
 	}
+	/**
+	 * method that exports the event information to a file. 
+	 * 
+	 * @throws IOException on bad input
+	 */
 	public void exportEvent() throws IOException
 	{
 		//Export file to .event file in /event_log/ directory
@@ -108,10 +207,19 @@ public class Event {
 		writer.flush();
 		writer.close();
 	}
+	/**
+	 * method that gets the admin's availability.
+	 * 
+	 * @return a vector that stores the admin's availability.
+	 */
 	public Vector getAvailability()
 	{
 		return a_adminAvailability;
 	}
+	/**
+	 * method that looks at the vector of integer for the admin's availability and prints 
+	 * its corresponding 12 hour time string.
+	 */
 	public void get12HourAvailability() {
 		for(int i= 0; i < a_adminAvailability.size(); i++) {
 
@@ -261,6 +369,10 @@ public class Event {
 			}
 		}
 	}
+	/**
+	 * method that looks at the vector of integer for the admin's availability and prints 
+	 * its corresponding 24 hour time string.
+	 */
 	public void get24HourAvailability() {
 		for(int i= 0; i < a_adminAvailability.size(); i++) {
 
