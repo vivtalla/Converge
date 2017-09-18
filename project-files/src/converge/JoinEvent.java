@@ -133,9 +133,6 @@ public class JoinEvent {
 				}
 		}
 				clearScreen();
-				/** 
-				 * boolean value that verifies proper input.
-				 */
 				boolean wrongFormat = true;
 				while (wrongFormat) {
 					System.out.println("12 Hour / 24 Hour Mode? (12/24):");	
@@ -169,31 +166,16 @@ public class JoinEvent {
 						clearPrint("Error\nThe selection is invalid.\n");
 					}
 				}
-				/** 
-				 * boolean value that verifies proper input.
-				 */
 				boolean correctTime = false;
 				while(!correctTime) {
 					System.out.println("Please enter all the times you are available within the given time options(seperate with spaces).");
-					/** 
-					 * string that holds the user's availability input.
-					 */
 					String s = "";
 					myScan.nextLine();
 					s = myScan.nextLine();
-					/** 
-					 * array that holds the separated user's availability input.
-					 */
-					String[] temp = s.split(",");
+					String[] temp = s.split(" ");
 					for(int i = 0; i<temp.length; i++) 
 					{
-						/** 
-						 * boolean value that verifies proper input.
-						 */
 						boolean correctValueFound = false;
-						/** 
-						 * integer used to move the user's separated input into time vector.
-						 */
 						Integer num = twelveHourtoInt(temp[i]);
 						for(int j=0; j<events.elementAt(eventChoice-1).getAvailability().size(); j++) 
 						{
@@ -239,13 +221,10 @@ public class JoinEvent {
 					}
 				}
 				System.out.println(times);
-				/** 
-				 * new attendee object created.
-				 */
 				Attendee a = new Attendee(userName, times);
-				events.elementAt(eventChoice).a_attendees.add(a);
-				events.elementAt(eventChoice).exportEvent();
-				clearPrint("You have successfully been added to the event " + events.elementAt(eventChoice).getEventName() + "!");
+				events.elementAt(eventChoice-1).a_attendees.add(a);
+				events.elementAt(eventChoice-1).exportEvent();
+				clearPrint("You have successfully been added to the event " + events.elementAt(eventChoice-1).getEventName() + "!");
 
 	}
 		/**
