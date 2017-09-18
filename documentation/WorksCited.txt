@@ -13,7 +13,7 @@ Link: https://stackoverflow.com/questions/13115266/how-to-insist-that-a-users-in
 Date Accessed: 9/17/2017
 
 Link: http://www.dummies.com/programming/java/how-to-use-javadoc-to-document-your-classes/
-Date Accessed: 9/18/2017
+Date Accessed: 9/17/2017
 
 Link: https://www.tutorialspoint.com/java/java_documentation.htm
-Date Accessed: 9/18/2017
+Date Accessed: 9/17/2017
