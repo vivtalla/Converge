@@ -9,35 +9,52 @@ import java.util.Scanner;
  * @author Menita Vedantam
  * @since 2017-09-15
  */
-public class Main {
-	public static void main(String []args) throws IOException
+public static void main(String []args) throws IOException
 	{
 		Scanner myScan = new Scanner(System.in);
 		String choice = "";
 		boolean incorrectInput = true;
+		boolean cont = true;
 		int c = 0;
-		while(incorrectInput) {
-			clearPrint("What would you like to do?\n 1. Create an Event\n 2. Join an event\nPlease enter number corresponding to the option you choose.");
-			choice = myScan.nextLine();
-			if(isInteger(choice)) {
-				c = Integer.valueOf(choice);
-				if(c == 1 || c == 2) {
-					incorrectInput = false;
+		while (cont)
+		{
+			while(incorrectInput) {
+				clearPrint("What would you like to do?\n 1. Create an Event\n 2. Join an event\n 3. View an existing event\nPlease enter number corresponding to the option you choose.");
+				choice = myScan.nextLine();
+				if(isInteger(choice)) {
+					c = Integer.valueOf(choice);
+					if(c == 1 || c == 2 || c == 3) {
+						incorrectInput = false;
+					}
+					else {
+						System.out.println("Invalid input. Please enter option 1 or 2.");
+					}
 				}
 				else {
 					System.out.println("Invalid input. Please enter option 1 or 2.");
 				}
 			}
-			else {
-				System.out.println("Invalid input. Please enter option 1 or 2.");
+			
+			if(c == 1) {
+				AddEvent AdminEvent = new AddEvent();
+				AdminEvent.start();
 			}
-		}
-		if(c == 1) {
-			AddEvent AdminEvent = new AddEvent();
-			AdminEvent.start();
-		}
-		else {
-			JoinEvent.run();
+			else if (c == 2) {
+				JoinEvent.run();
+			}
+			else if (c == 3)
+			{
+				JoinEvent.view();
+			}
+			
+			System.out.println("\nPress enter to return to main menu\nType 'quit' to exit:\n");
+			String exit = myScan.nextLine();
+			if (exit.equals("quit"))
+			{
+				cont = false;
+			}
+			c = 0;
+			incorrectInput = true;
 		}
 		myScan.close();
 	}
