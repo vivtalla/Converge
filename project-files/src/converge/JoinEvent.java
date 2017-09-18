@@ -666,20 +666,6 @@ public class JoinEvent {
 			System.out.println("\n");
 		}
 	}
-	
-	private static void clearPrint(String text)
-	{
-		clearScreen();
-		System.out.println(text);
-	}
-	
-	private static void clearScreen()
-	{
-		for (int i = 0; i < 100; i++)
-		{
-			System.out.println("\n");
-		}
-	}
 	//method will convert the ints placed in the vectors to the needed strings for 12 hour mode
 	public static String twelveHourConversion(int i) 
 	{

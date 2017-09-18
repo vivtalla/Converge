@@ -10,12 +10,12 @@ import java.util.Scanner;
  * @since 2017-09-15
  */
 public static void main(String []args) throws IOException
-	{
-		Scanner myScan = new Scanner(System.in);
-		String choice = "";
-		boolean incorrectInput = true;
-		boolean cont = true;
-		int c = 0;
+{
+	Scanner myScan = new Scanner(System.in);
+	String choice = "";
+	boolean incorrectInput = true;
+	boolean cont = true;
+	int c = 0;
 		while (cont)
 		{
 			while(incorrectInput) {
