@@ -99,12 +99,4 @@ public static void main(String []args) throws IOException
 			System.out.println("\n");
 		}
 	}
-	
-	/**
-	 * This method displays the availabilities for all the attendees.
-	 */
-	public void view()
-	{
-		
-	}
 }
