@@ -3,6 +3,12 @@ import java.io.IOException;
 import java.util.Vector;
 import java.util.Scanner;
 
+/**
+ * The main.java file will be used to run the Convergent App.
+ * 
+ * @author Menita Vedantam
+ * @since 2017-09-15
+ */
 public class Main {
 	public static void main(String []args) throws IOException
 	{
@@ -35,6 +41,13 @@ public class Main {
 		}
 		myScan.close();
 	}
+	
+	/**
+	 * Checks to see if the given value is an integer.
+	 * @param s the string that will be checked to see if it is
+	 * an integer.
+	 * @return boolean that determines if the string is an integer.
+	 */
 	public static boolean isInteger(String s) {
 	    try { 
 	        Integer.parseInt(s); 
@@ -48,17 +61,33 @@ public class Main {
 	    return true;
 	}
 	
+	/**
+	 * Method that clearly prints whatever string is given to the method.
+	 * 
+	 * @param text that will be clearly printed.
+	 */
 	private static void clearPrint(String text)
 	{
 		clearScreen();
 		System.out.println(text);
 	}
 	
+	/**
+	 * Method that will clear the screen of all output.
+	 */
 	private static void clearScreen()
 	{
 		for (int i = 0; i < 100; i++)
 		{
 			System.out.println("\n");
 		}
+	}
+	
+	/**
+	 * This method displays the availabilities for all the attendees.
+	 */
+	public void view()
+	{
+		
 	}
 }
