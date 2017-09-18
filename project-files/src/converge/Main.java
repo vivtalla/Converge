@@ -9,13 +9,14 @@ import java.util.Scanner;
  * @author Menita Vedantam
  * @since 2017-09-15
  */
-public static void main(String []args) throws IOException
-{
-	Scanner myScan = new Scanner(System.in);
-	String choice = "";
-	boolean incorrectInput = true;
-	boolean cont = true;
-	int c = 0;
+public class Main {
+	public static void main(String []args) throws IOException
+	{
+		Scanner myScan = new Scanner(System.in);
+		String choice = "";
+		boolean incorrectInput = true;
+		boolean cont = true;
+		int c = 0;
 		while (cont)
 		{
 			while(incorrectInput) {
