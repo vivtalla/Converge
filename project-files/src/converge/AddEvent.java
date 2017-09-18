@@ -13,11 +13,6 @@ import java.util.Date;
  * @since 2017-09-15
  */
 public class AddEvent{
-	public static void main(String[] args) throws IOException {
-		AddEvent AdminEvent = new AddEvent();
-		AdminEvent.start();
-	}
-	
 	/**
 	 * This is a method that will take in ints placed in the availability vectors
 	 * and will convert it into its corresponding time string for 12 hour mode.
