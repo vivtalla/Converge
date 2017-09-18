@@ -13,8 +13,6 @@ import java.util.Scanner;
 public class joinEvent {
 	/**
 	 * This method will be called when the user selects join event in main.
-	 * @param
-	 * @return
 	 */
 	static void run()throws IOException {
 		FileRead fr = new FileRead();
