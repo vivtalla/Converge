@@ -9,6 +9,12 @@ Date Accessed: 9/14/2017
 Link: https://stackoverflow.com/questions/136419/get-integer-value-of-the-current-year-in-java
 Date Accessed: 9/16/2017
 
+Link: https://stackoverflow.com/questions/10631715/how-to-split-a-comma-separated-string
+Date Accessed: 9/16/2017
+
+Link: https://stackoverflow.com/questions/5439529/determine-if-a-string-is-an-integer-in-java
+Date Accessed: 9/17/2017
+
 Link: https://stackoverflow.com/questions/13115266/how-to-insist-that-a-users-input-is-an-int
 Date Accessed: 9/17/2017
 
