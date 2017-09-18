@@ -1066,5 +1066,3 @@ public class JoinEvent {
 		return conversion;
 	}
 }
-
-}
