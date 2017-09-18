@@ -26,17 +26,25 @@ public class Main {
 				System.out.println("Invalid input. Please enter option 1 or 2.");
 			}
 		}
+		if(c == 1) {
+			AddEvent AdminEvent = new AddEvent();
+			AdminEvent.start();
+		}
+		else {
+			JoinEvent.run();
+		}
 		myScan.close();
 	}
 	public static boolean isInteger(String s) {
 	    try { 
 	        Integer.parseInt(s); 
-	    } catch(NumberFormatException e) { 
+	    } 
+	    catch(NumberFormatException e) { 
 	        return false; 
-	    } catch(NullPointerException e) {
+	    } 
+	    catch(NullPointerException e) {
 	        return false;
 	    }
-	    // only got here if we didn't return false
 	    return true;
 	}
 }
