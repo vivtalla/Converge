@@ -11,7 +11,7 @@ public class Main {
 		boolean incorrectInput = true;
 		int c = 0;
 		while(incorrectInput) {
-			System.out.println("What would you like to do?/n 1. Create an Event/n 2. Join an event/n Please enter number corresponding to the option you choose.");
+			clearPrint("What would you like to do?\n 1. Create an Event\n 2. Join an event\nPlease enter number corresponding to the option you choose.");
 			choice = myScan.nextLine();
 			if(isInteger(choice)) {
 				c = Integer.valueOf(choice);
@@ -46,5 +46,19 @@ public class Main {
 	        return false;
 	    }
 	    return true;
+	}
+	
+	private static void clearPrint(String text)
+	{
+		clearScreen();
+		System.out.println(text);
+	}
+	
+	private static void clearScreen()
+	{
+		for (int i = 0; i < 100; i++)
+		{
+			System.out.println("\n");
+		}
 	}
 }
